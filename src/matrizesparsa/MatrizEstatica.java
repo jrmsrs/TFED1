@@ -119,17 +119,32 @@ public class MatrizEstatica {
 
     //10. Verificar se é uma matriz triangular inferior (só tem elementos da diagonal principal para baixo);
     public boolean isTriangularInf() {
-        return false;
+        // verifica elementos acima da diagonal principal
+        for (int i = 0; i < this.lin; i++) 
+        for (int j = (i + 1); j < this.col; j++) 
+            // verifica se eles sao iguais a zero
+            if (this.matriz[i][j] != 0) return false;
+
+        return true;
     }
 
     //11. Verificar se é uma matriz triangular superior (só tem elementos da diagonal principal para cima);
     public boolean isTriangularSup() {
-        return false;
+        // verifica elementos abaixo da diagonal principal
+        for (int i = 0; i < this.lin; i++) 
+        for (int j = 0; j < i; j++) 
+            if (this.matriz[i][j] != 0) return false;
+            
+        return true;
     }
 
     //12. Verificar se a matriz é simétrica; (A[i,j] = A[j,i] para todo i, j);
     public boolean isSimetrica() {
-        return false;
+        for (int i = 0; i < this.lin; i++) 
+        for (int j = 0; j < this.col; j++) 
+            if (matriz[i][j] != matriz[j][i]) return false;
+        
+        return true;
     }
 
     //13. Somar duas matrizes esparsas;

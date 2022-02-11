@@ -1,0 +1,44 @@
+I)
+para calcular o tempo levado para execuçao de um metodo,
+antes da execucao do metodo, use uma variavel que guarde o tempo exato q foi executado
+e depois de executar, calcule o tempo atual - o tempo guardado nessa variavel
+    ou seja:
+    tempoInicial = System.currentTimeMillis();
+    executaMetodo();
+    tempoTotalEmMiliseg = System.currentTimeMillis() - tempoInicial);
+
+- System.currentTimeMillis(); 
+é um valor LONG universal que pega a quantidade exata de milisegundos que se passaram 
+desde january 1 1970 00:00:00 UTC (unix timestamp) - https://currentmillis.com/
+
+II)
+o método gerarMatrizEstaticaAleatoria(int) foi testado em (10 vezes cada):
+Matriz 10x10 - oscilando entre 1 e 0 milisegundos
+Matriz 20x20 - 1 milisegundo
+Matriz 30x30 - entre 1 e 2 milisegundos
+Matriz 40x40 - 2 milisegundos
+Matriz 50x50 - média de 2 milisegundos, 1-3
+Matriz 100x100 - média de 4 milisegundos, 3-5
+Matriz 200x200 - média de 7 milisegundos, 6-9
+Matriz 500x500 - média entre 17 e 18 milisegundos, chegando até a 25
+Matriz 1000x1000 - média de 45 milisegundos, chegando até a 51
+Matriz 10000x10000 - média de 3,3 segundos, de 3261 a 3349 millisec
+Matriz 20000x20000 - média de 13 segundos, de 13182 a 13222 millisec
+Matriz 50000x50000 - OutOfMemoryError: Java heap space (aumentar o heap seria muito custoso)
+Matriz 100000x100000 -  ...
+
+Se ao invés de int fosse por exemplo byte ou boolean a JVM na mesma 
+configuraçao até poderia rodar 50000x50000.
+
+Ainda assim o método deve funcionar mesmo para 100.000 desde que tenha 
+espaço suficiente na máquina, apesar de que uma matriz desse exemplo 
+custaria no mínimo 10GB de memória!
+
+
+-- 
+
+Uma matriz quadratica de 100.000x100.000 possui espaço para 10.000.000.000 elementos
+mesmo para gerar uma matriz dinâmica com 60% dos espaços preenchidos ainda seria
+10.000.000.000 * 0,6 = 6.000.000.000 elementos, e sendo eles do tipo INT, ocuparia um espaço 
+enorme na memória.
+
