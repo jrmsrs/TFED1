@@ -13,8 +13,8 @@ public class MatrizEstatica {
     }
     
     //1. Inserir um elemento;
-    public void insere(int insereLin, int insereCol, int insereDado) {
-        matriz[insereLin][insereCol] = insereDado;
+    public void insere(int newLin, int newCol, int newDado) {
+        matriz[newLin][newCol] = newDado;
     }
     
     //2. Remover um elemento;
@@ -67,14 +67,14 @@ public class MatrizEstatica {
         if (this.isVazia()) return false;
 
         //varre a matriz
-        for (int i = 0; i < this.lin; i++) {
-            for (int j = 0; j < this.col; j++) {
-                if (i != j && matriz[i][j] != 0) {
-                    //se encontrar algum valor quando i != j, ou seja, fora da diagonal principal
-                    return false;
-                }
+        for (int i = 0; i < this.lin; i++) 
+        for (int j = 0; j < this.col; j++) 
+            if (i != j && matriz[i][j] != 0) {
+                //se encontrar algum valor quando i != j, ou seja, fora da diagonal principal
+                return false;
             }
-        }
+        
+        
         //caso contrario:
         return true;
     }
@@ -148,18 +148,31 @@ public class MatrizEstatica {
     }
 
     //13. Somar duas matrizes esparsas;
-    public static MatrizEstatica somar() {
+    public static MatrizEstatica somar(MatrizEstatica m1, MatrizEstatica m2) {
         return null;
     }
 
     //14. Multiplicar duas matrizes esparsas; e
-    public static MatrizEstatica multiplicar() {
+    public static MatrizEstatica multiplicar(MatrizEstatica m1, MatrizEstatica m2) {
         return null;
     }
 
     //15. Obter a matriz transposta.
-    public static MatrizEstatica transpor() {
-        return null;
+    public MatrizEstatica transpor() {
+        if (this.lin != this.col) 
+            return null;
+        
+        int[][] m = new int[this.lin][this.col];
+        for (int i = 0; i < this.lin; i++) 
+        for (int j = 0; j < this.col; j++) 
+            if (i > j){
+                m[j][i] = matriz[i][j];
+                m[i][j] = matriz[j][i];
+            }else{ 
+                m[i][j] = matriz[i][j]; 
+            }
+        
+        return new MatrizEstatica(m);
     }
 
 }

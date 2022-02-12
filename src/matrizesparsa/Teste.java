@@ -2,7 +2,7 @@ package matrizesparsa;
 
 public class Teste {
 
-    //funcoes pra gerar as matrizes
+    //metodo pra gerar matriz aleatoria com exatos (ou aproximadamente) x% de zeros
     public static int[][] gerarMatrizEstaticaAleatoria(int size, double esparsidade){
         int[][] matriz = new int[size][size]; 
         long total = size*size;
@@ -24,18 +24,17 @@ public class Teste {
                 atualValores++;
             }
 
-            //a variavel esparsidade sera 1 ou 0 quando a quantidade predefinida (qtdXXXX) de algum valor 
+            //a variavel esparsidade passa a ser 1 ou 0 quando alguma quantidade predefinida (qtdXXXX) 
             //tiver sido atingido, entao as proximas posicoes serao preenchidas com o que ainda faltar 
             if (atualValores>=qtdValores)
                 esparsidade=1;
             if (atualZeros>=qtdZeros)
                 esparsidade=0;
-            
         }
         
         //System.out.println("Matriz gerada: "+ ((double)atualZeros/total)*100 + "% de zeros.");
         return matriz;
-    }
+    } //adaptar esse metodo para funcionar para gerar matriz estatica e dinamica(?)
 
     public static void main(String[] args) {
 
@@ -84,19 +83,28 @@ public class Teste {
         System.out.println("É Matriz Linha? "    + matriz.isLinha());
         System.out.println("É Matriz Coluna? "   + matriz.isColuna());
         System.out.println("É Matriz Triangular Sup? " + matriz.isTriangularSup());
-        System.out.println("É Matriz Triangular Inf? " + matriz.isTriangularInf());
+        System.out.println("É Matriz Triangular Inf? " + matriz.isTriangularInf()+"\n");
 
-        //realizando metodos de inserçao e remoçao
+        //metodos de inserçao e remoçao
+        /*
+        System.out.println("\nAtualizando matriz: ");
         matriz.insere(1, 1, 5);
         matriz.remove(0, 4);
+        matriz.imprime();
+        */
+
+        System.out.println("Transpondo matriz: ");
+        matriz = matriz.transpor();
         matriz.imprime();
 
         //teste extremo gerarMatrizEstaticaAleatoria()
         int tamanhoTeste = 10000;
         System.out.println("Gerando matriz tamanho " + tamanhoTeste + "x" + tamanhoTeste + " aleatoria...");
+
         tempoInicial = System.currentTimeMillis();
         gerarMatrizEstaticaAleatoria(tamanhoTeste,.6);
         tempoFinal = (System.currentTimeMillis() - tempoInicial);
+
         System.out.println("Tempo levado para gerar matriz: " + tempoFinal + " milisegundos.");
         
     }
