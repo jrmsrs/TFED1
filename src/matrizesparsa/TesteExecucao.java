@@ -9,7 +9,7 @@ public class TesteExecucao {
     public static void main(String[] args) {
 
         //propriedades do teste:
-        int tamanhoMatriz =100000;   //tamanhoMatriz X tamanhoMatriz
+        int tamanhoMatriz=100000;   //tamanhoMatriz X tamanhoMatriz
         int repetirVezes = 1;      
         boolean dinamica = true;   //true=estatica false=dinamica
 
@@ -29,8 +29,9 @@ public class TesteExecucao {
         System.out.println("Gerando matriz tamanho " + tamanhoMatriz + "x" + tamanhoMatriz + " aleatoria...");
 
         for (int i = 0; i < repetirVezes; i++) {
+            //se for matriz estatica ele gera matriz estatica
             if (!dinamica){
-                //matriz estatica
+                
                 tempoInicialEstatica =   getTempo();
                 consumoInicialEstatica = getConsumo();
                 MatrizEstatica.gerarMatrizEstaticaAleatoria(tamanhoMatriz,.6);
@@ -40,7 +41,7 @@ public class TesteExecucao {
                 tempoMedioEstatica   += tempoFinalEstatica   - tempoInicialEstatica;
                 consumoMedioEstatica += consumoFinalEstatica - consumoInicialEstatica;
 
-                //calcula a media e mostra a saida no final do teste
+                //calcula a media das N vezes que rodou o codigo e mostra a saida no final do teste
                 if (i == repetirVezes-1){
                     tempoMedioEstatica /= i+1;
                     System.out.println("Tempo médio (estatica): " + tempoMedioEstatica + " millisecs.");
@@ -48,9 +49,9 @@ public class TesteExecucao {
                     System.out.println("Consumo médio (estatica): " + (consumoMedioEstatica/1000) + " kilobytes.");
                 }
 
+            //se for matriz dinamica ele gera matriz dinamica
             }else{
 
-                //matriz dinamica
                 tempoInicialDinamica =   getTempo();
                 consumoInicialDinamica = getConsumo();
                 MatrizDinamica.gerarMatrizDinamicaAleatoria(tamanhoMatriz,.6);
