@@ -1,8 +1,6 @@
 package matrizesparsa;
 
-public class TesteMDinamica {
-
-
+public class TesteDinamica {
 
     public static void main(String[] args) {
 

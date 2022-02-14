@@ -1,5 +1,8 @@
 package matrizesparsa;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 public class MatrizDinamica {
 
     private Elo[] primArray;
@@ -22,7 +25,7 @@ public class MatrizDinamica {
             this.prox = proxElem;
         }
 
-        public String toString() { //imprimir cada elemento como [1][4]=50
+        public String toString() { 
             return ""+dado;
         }
     }
@@ -71,8 +74,22 @@ public class MatrizDinamica {
     }
 
     //3. Busca por um elemento específico;
-    public Elo busca(int lin, int col){
-        return null;
+    public int busca(int lin, int col){
+        Elo p = primArray[lin];
+        while (p != null) {
+            // Se for menor, continua busca
+            if (p.col < col) {
+                p = p.prox;
+                continue;
+                // Se for igual a gente substitui
+            } else if (p.col == col) {
+                return p.dado;
+                // Se for a prox for maior, entao a insercao tem que acontecer nesse ponto
+            } else {
+                return 0;
+            }
+        }
+        return 0;
     }
 
     //4. Impressão da matriz;
@@ -147,5 +164,30 @@ public class MatrizDinamica {
     //14. Multiplicar duas matrizes esparsas; e
     
     //15. Obter a matriz transposta.
+
+    //metodo estatico pra gerar matriz aleatoria com exatos (ou o mais aproximado de) x% de zeros
+    public static MatrizDinamica gerarMatrizDinamicaAleatoria(int size, double esparsidade){ //esparsidade 0.6
+        MatrizDinamica matriz = new MatrizDinamica(size,size); 
+        long total = (long)size*size;
+        //double qtdValores = total - (total * esparsidade);
+        long qtdValores = (long)(total - (total * esparsidade));
+        long atualValores=0;
+        int lin,col,dado;
+
+        while(atualValores<qtdValores){
+            //sorteia linha e coluna entre 0 e size
+            lin= (int) (  Math.floor( (int) (Math.random() * (size) ) ));
+            col= (int) (  Math.floor( (int) (Math.random() * (size) ) ));
+            //sorteia dado entre 1 e 9
+            dado=(int) (1+Math.floor( (int) (Math.random() *    9   ) ));
+            //se nao esta preenchido, preenche e aumenta atual valores
+            if (matriz.busca(lin,col)==0){
+                matriz.insere(lin, col, dado);
+                atualValores++;
+            }
+        }
+        
+        return matriz;
+    }
 
 }

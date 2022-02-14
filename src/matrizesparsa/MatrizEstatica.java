@@ -30,6 +30,9 @@ public class MatrizEstatica {
                 return true;
         return false;
     }
+    public int busca(int lin, int col) {
+        return matriz[lin][col];
+    }
 
     //4. Impressão da matriz;
     public void imprime() {
@@ -47,9 +50,6 @@ public class MatrizEstatica {
         this.matriz = new int[l][c];
         this.lin = l;
         this.col = c;
-        for (int i = 0; i < lin; i++) 
-        for (int j = 0; j < col; j++) 
-            this.matriz[i][j] = 0;
     }
 
     //6. Verificar se é uma matriz vazia;
@@ -173,6 +173,30 @@ public class MatrizEstatica {
             }
         
         return new MatrizEstatica(m);
+    }
+
+    //metodo estatico pra gerar matriz aleatoria com exatos (ou aproximadamente) x% de zeros
+    public static MatrizEstatica gerarMatrizEstaticaAleatoria(int size, double esparsidade){ //esparsidade 0.6
+        MatrizEstatica matriz = new MatrizEstatica(size,size); 
+        long total = size*size;
+        double qtdValores = total - (total * esparsidade);
+        int atualValores=0;
+        int lin,col,dado;
+
+        while(atualValores<qtdValores){
+            //sorteia linha e coluna entre 0 e size
+            lin= (int) (  Math.floor( (int) (Math.random() * (size) ) ));
+            col= (int) (  Math.floor( (int) (Math.random() * (size) ) ));
+            //sorteia dado entre 1 e 9
+            dado=(int) (1+Math.floor( (int) (Math.random() *    9   ) ));
+            //se nao esta preenchido, preenche e aumenta atual valores
+            if (matriz.busca(lin,col)==0){
+                matriz.insere(lin, col, dado);
+                atualValores++;
+            }
+
+        }
+        return matriz;
     }
 
 }
