@@ -13,14 +13,10 @@ public class MatrizEstatica {
     }
     
     //1. Inserir um elemento;
-    public void insere(int newLin, int newCol, int newDado) {
-        matriz[newLin][newCol] = newDado;
-    }
+    public void insere(int newLin, int newCol, int newDado) { matriz[newLin][newCol] = newDado; }
     
     //2. Remover um elemento;
-    public void remove(int removeLin, int removeCol) {
-        matriz[removeLin][removeCol] = 0;
-    }
+    public void remove(int removeLin, int removeCol) { matriz[removeLin][removeCol] = 0; }
     
     //3. Busca por um elemento específico;
     public boolean busca(int buscaDado) {
@@ -30,9 +26,7 @@ public class MatrizEstatica {
                 return true;
         return false;
     }
-    public int busca(int lin, int col) {
-        return matriz[lin][col];
-    }
+    public int busca(int lin, int col) { return matriz[lin][col]; }
 
     //4. Impressão da matriz;
     public void imprime() {
@@ -66,14 +60,13 @@ public class MatrizEstatica {
     public boolean isDiagonal() {
         if (this.isVazia()) return false;
 
-        //varre a matriz
+        //percorre a matriz
         for (int i = 0; i < this.lin; i++) 
         for (int j = 0; j < this.col; j++) 
             if (i != j && matriz[i][j] != 0) {
                 //se encontrar algum valor quando i != j, ou seja, fora da diagonal principal
                 return false;
             }
-        
         
         //caso contrario:
         return true;
