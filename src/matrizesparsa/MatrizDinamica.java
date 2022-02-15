@@ -67,9 +67,8 @@ public class MatrizDinamica {
 
     //2. Remover um elemento;
     public boolean remove(int removeLin, int removeCol){
-        Elo elo;
-        //apenas anda com o cursor até achar (ou não) a coluna
-        for(elo = primArray[removeLin]; ((elo!=null)&&(elo.col!=removeCol)); elo = elo.prox){}
+        //realiza o metodo de busca (privada) ate encontrar o elemento
+        Elo elo = buscaPriv(removeLin, removeCol);
         //se nao encontrou
         if (elo == null) return false;
         //se encontrou remove
@@ -79,21 +78,25 @@ public class MatrizDinamica {
 
     //3. Busca por um elemento específico;
     public int busca(int lin, int col){
-        Elo p = primArray[lin];
-        while (p != null) {
-            // caso seja menor continua procurando
-            if (p.col < col) {
-                p = p.prox;
-                continue;
-                //caso encontre, retorne o dado
-            } else if (p.col == col) {
-                return p.dado;
-                //caso seja maior, termine a busca
-            } else {
-                return 0;
-            }
-        }
-        return 0;
+        if (lin>this.lin-1 || col>this.col-1) return -1;
+        Elo elo;
+        //apenas anda com o cursor até achar (ou não) a coluna
+        for(elo = primArray[lin]; ((elo!=null)&&(elo.col!=col)); elo = elo.prox){}
+        //se nao encontrou
+        if (elo == null) return 0;
+        //se encontrou
+        return elo.dado;
+    }
+    //3.1. Busca auxiliar
+    private Elo buscaPriv(int lin, int col){
+        if (lin>this.lin || col>this.col) return null;
+        Elo elo;
+        //apenas anda com o cursor até achar (ou não) a coluna
+        for(elo = primArray[lin]; ((elo!=null)&&(elo.col!=col)); elo = elo.prox){}
+        //se nao encontrou
+        if (elo == null) return null;
+        //se encontrou
+        return elo;
     }
 
     //4. Impressão da matriz;
