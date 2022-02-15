@@ -1,6 +1,6 @@
 package matrizesparsa;
 
-public class Teste {
+public class TesteMatrizes {
 
     public static void main(String[] args) {
         
@@ -61,7 +61,7 @@ public class Teste {
 
         //para testar alguma matriz pré montada ou gerada acima (m0,m1,m2,m3)
         System.out.println("Matriz selecionada:");
-        mEstatica = m0;
+        mEstatica = new MatrizEstatica(m0);
         mEstatica.imprime();
         //verifica se e linha coluna diagonal etc etc etc
         System.out.println("É Matriz Diagonal? " + mEstatica.isDiagonal());

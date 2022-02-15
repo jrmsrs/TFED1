@@ -9,8 +9,8 @@ public class TesteExecucao {
     public static void main(String[] args) {
 
         //propriedades do teste:
-        int tamanhoMatriz=100000;   //tamanhoMatriz X tamanhoMatriz
-        int repetirVezes = 1;      
+        int tamanhoMatriz=1000;   //tamanhoMatriz X tamanhoMatriz
+        int repetirVezes = 10;      
         boolean dinamica = true;   //true=estatica false=dinamica
 
         rodarTeste(tamanhoMatriz,repetirVezes,dinamica);
