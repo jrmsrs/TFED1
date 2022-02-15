@@ -51,8 +51,7 @@ public class MatrizEstatica {
         if (matriz == null) return true;
         for (int i = 0; i < lin; i++) 
         for (int j = 0; j < col; j++) 
-            if (matriz[i][j] != 0) 
-                return false;
+            if (matriz[i][j] != 0) return false;
         return true;
     }
 
@@ -142,12 +141,30 @@ public class MatrizEstatica {
 
     //13. Somar duas matrizes esparsas;
     public static MatrizEstatica somar(MatrizEstatica m1, MatrizEstatica m2) {
-        return null;
+        //nao soma matrizes com tamanho diferentes
+        if (m1.lin != m2.lin || m1.col != m2.col) return null;
+
+        int[][] soma = new int[m1.lin][m1.col]; //auxiliar
+
+        for (int l = 0; l < m1.matriz.length; l++) 
+        for (int c = 0; c < m1.matriz.length; c++) 
+            soma[l][c] = m1.matriz[l][c] + m2.matriz[l][c];
+        
+        return new MatrizEstatica(soma);
     }
 
     //14. Multiplicar duas matrizes esparsas; e
     public static MatrizEstatica multiplicar(MatrizEstatica m1, MatrizEstatica m2) {
-        return null;
+        //nao multiplica matrizes com tamanho diferentes
+        if (m1.lin != m2.lin || m1.col != m2.col) return null; 
+
+        int[][] multi = new int[m1.lin][m1.col]; //auxiliar
+
+        for (int l = 0; l < m1.matriz.length; l++) 
+        for (int c = 0; c < m1.matriz.length; c++) 
+            multi[l][c] = m1.matriz[l][c] * m2.matriz[l][c];
+
+        return new MatrizEstatica(multi);
     }
 
     //15. Obter a matriz transposta.

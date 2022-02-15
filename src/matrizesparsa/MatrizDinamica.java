@@ -130,7 +130,11 @@ public class MatrizDinamica {
 
     //6. Verificar se é uma matriz vazia;
     public boolean isVazia(){
-        return false;
+        if (primArray==null) return true;
+        for (int i = 0; i < primArray.length; i++) {
+            if (primArray[i] != null) return false;
+        }
+        return true;
     }
 
     //7. Verificar se é uma matriz diagonal (só tem elementos na diagonal principal);
