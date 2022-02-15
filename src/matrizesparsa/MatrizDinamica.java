@@ -170,7 +170,7 @@ public class MatrizDinamica {
     //15. Obter a matriz transposta.
 
     //metodo estatico pra gerar matriz aleatoria com exatos (ou o mais aproximado de) x% de zeros
-    public static MatrizDinamica gerarMatrizDinamicaAleatoria(int size, double esparsidade){ //esparsidade 0.6
+    public static MatrizDinamica gerarMatrizAleatoria(int size, double esparsidade){ //esparsidade 0.6
         MatrizDinamica matriz = new MatrizDinamica(size,size); 
         long total = (long)size*size;
         //double qtdValores = total - (total * esparsidade);

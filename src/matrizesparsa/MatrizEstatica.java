@@ -169,7 +169,7 @@ public class MatrizEstatica {
     }
 
     //metodo estatico pra gerar matriz aleatoria com exatos (ou aproximadamente) x% de zeros
-    public static MatrizEstatica gerarMatrizEstaticaAleatoria(int size, double esparsidade){ //esparsidade 0.6
+    public static MatrizEstatica gerarMatrizAleatoria(int size, double esparsidade){ //esparsidade 0.6
         MatrizEstatica matriz = new MatrizEstatica(size,size); 
         long total = size*size;
         double qtdValores = total - (total * esparsidade);

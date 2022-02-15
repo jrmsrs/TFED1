@@ -34,7 +34,7 @@ public class TesteExecucao {
                 
                 tempoInicialEstatica =   getTempo();
                 consumoInicialEstatica = getConsumo();
-                MatrizEstatica.gerarMatrizEstaticaAleatoria(tamanhoMatriz,.6);
+                MatrizEstatica.gerarMatrizAleatoria(tamanhoMatriz,.6);
                 tempoFinalEstatica =     getTempo();
                 consumoFinalEstatica =   getConsumo();
 
@@ -54,7 +54,7 @@ public class TesteExecucao {
 
                 tempoInicialDinamica =   getTempo();
                 consumoInicialDinamica = getConsumo();
-                MatrizDinamica.gerarMatrizDinamicaAleatoria(tamanhoMatriz,.6);
+                MatrizDinamica.gerarMatrizAleatoria(tamanhoMatriz,.6);
                 tempoFinalDinamica =     getTempo();
                 consumoFinalDinamica =   getConsumo();
 
