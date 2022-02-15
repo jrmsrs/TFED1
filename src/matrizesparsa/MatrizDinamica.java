@@ -66,8 +66,15 @@ public class MatrizDinamica {
     }
 
     //2. Remover um elemento;
-    public void remove(int removeLin, int removeCol){
-        return;
+    public boolean remove(int removeLin, int removeCol){
+        Elo elo;
+        //apenas anda com o cursor até achar (ou não) a coluna
+        for(elo = primArray[removeLin]; ((elo!=null)&&(elo.col!=removeCol)); elo = elo.prox){}
+        //se nao encontrou
+        if (elo == null) return false;
+        //se encontrou remove
+        primArray[removeLin] = primArray[removeLin].prox; 
+        return true;
     }
 
     //3. Busca por um elemento específico;
