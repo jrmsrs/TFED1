@@ -144,8 +144,8 @@ public class MatrizDinamica {
     public boolean isDiagonal(){
         if (isVazia()) return false;
 
-        for (int i = 0; i < primArray.length; i++) 
-        for (int j = 0; j < primArray.length; j++) {
+        for (int i = 0; i < this.lin; i++) 
+        for (int j = 0; j < this.col; j++) {
             if (i!=j) if (buscaPriv(i, j) != null) 
                 return false;
         }
@@ -160,6 +160,7 @@ public class MatrizDinamica {
 
         int contador=0;
 
+        //so precisa saber se tem referencias nao nulas em mais de uma linha
         for (int i = 0; i < primArray.length; i++) 
             if (primArray[i]!=null)
                 if (++contador>1) 
@@ -175,8 +176,9 @@ public class MatrizDinamica {
 
         int contador=0;
 
-        for (int i = 0; i < primArray.length; i++) 
-        for (int j = 0; j < primArray.length; j++) {
+        //precisara verificar pra cada posicao
+        for (int i = 0; i < this.col; i++) 
+        for (int j = 0; j < this.lin; j++) {
             if (buscaPriv(j,i)!=null){
                 if (++contador>1) return false;
                 break;
