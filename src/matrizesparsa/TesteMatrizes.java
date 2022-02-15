@@ -61,7 +61,7 @@ public class Teste {
 
         //para testar alguma matriz pré montada ou gerada acima (m0,m1,m2,m3)
         System.out.println("Matriz selecionada:");
-        mEstatica = MatrizEstatica.gerarMatrizEstaticaAleatoria(6,.6);
+        mEstatica = m0;
         mEstatica.imprime();
         //verifica se e linha coluna diagonal etc etc etc
         System.out.println("É Matriz Diagonal? " + mEstatica.isDiagonal());
@@ -74,14 +74,6 @@ public class Teste {
         System.out.println("Transpondo matriz: ");
         MatrizEstatica transposta = mEstatica.transpor();
         transposta.imprime();
-
-        /*
-        System.out.println("Soma e multiplicaçao (respectivamente) entre matriz e transposta: ");
-        MatrizEstatica soma = MatrizEstatica.somar(mEstatica, transposta);
-        MatrizEstatica multi= MatrizEstatica.multiplicar(mEstatica, transposta);
-        //soma.imprime();
-        //multi.imprime();
-        */
 
     }
 }
