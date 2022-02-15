@@ -74,14 +74,14 @@ public class MatrizDinamica {
     public int busca(int lin, int col){
         Elo p = primArray[lin];
         while (p != null) {
-            // Se for menor, continua busca
+            // caso seja menor continua procurando
             if (p.col < col) {
                 p = p.prox;
                 continue;
-                // Se for igual a gente substitui
+                //caso encontre, retorne o dado
             } else if (p.col == col) {
                 return p.dado;
-                // Se for a prox for maior, entao a insercao tem que acontecer nesse ponto
+                //caso seja maior, termine a busca
             } else {
                 return 0;
             }
