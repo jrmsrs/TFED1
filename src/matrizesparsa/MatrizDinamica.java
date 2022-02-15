@@ -142,17 +142,48 @@ public class MatrizDinamica {
 
     //7. Verificar se é uma matriz diagonal (só tem elementos na diagonal principal);
     public boolean isDiagonal(){
-        return false;
+        if (isVazia()) return false;
+
+        for (int i = 0; i < primArray.length; i++) 
+        for (int j = 0; j < primArray.length; j++) {
+            if (i!=j) if (buscaPriv(i, j) != null) 
+                return false;
+        }
+        
+        return true;
     }
 
     //8. Verificar se é uma matriz linha (só tem elementos em uma única linha);
     public boolean isLinha(){
-        return false;
+        if (isVazia()) return false;
+        if (this.lin==1) return true;
+
+        int contador=0;
+
+        for (int i = 0; i < primArray.length; i++) 
+            if (primArray[i]!=null)
+                if (++contador>1) 
+                    return false;
+
+        return true;
     }
 
     //9. Verificar se é uma matriz coluna (só tem elementos em uma única coluna);
     public boolean isColuna(){
-        return false;
+        if (isVazia()) return false;
+        if (this.col==1) return true;
+
+        int contador=0;
+
+        for (int i = 0; i < primArray.length; i++) 
+        for (int j = 0; j < primArray.length; j++) {
+            if (buscaPriv(j,i)!=null){
+                if (++contador>1) return false;
+                break;
+            }
+        }
+
+        return true;
     }
     
     //10. Verificar se é uma matriz triangular inferior (só tem elementos da diagonal principal para baixo);
