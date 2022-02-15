@@ -1,8 +1,5 @@
 package matrizesparsa;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
 public class MatrizDinamica {
 
     private Elo[] primArray;
