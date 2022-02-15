@@ -18,6 +18,19 @@ public class TesteMatrizes {
         mDinamica.insere(0, 0, 5); mDinamica.insere(5, 5, 2);
         mDinamica.imprime();
 
+        /* para testar matriz dinamica
+
+        System.out.println("Matriz diagonal? " + mDinamica.isDiagonal());
+        System.out.println("Matriz linha? " + mDinamica.isLinha());
+        System.out.println("Matriz coluna? " + mDinamica.isColuna());
+        System.out.println("Matriz simetrica? " + mDinamica.isSimetrica());
+        System.out.println("Matriz vazia? " + mDinamica.isVazia()+"\n");
+
+        MatrizDinamica trans = mDinamica.transpor();
+        trans.imprime();
+
+        */
+
         System.out.println("\nTestando remoção (estatica):");
         mEstatica.remove(0, 0); mEstatica.remove(5, 5);
         mEstatica.imprime();

@@ -37,6 +37,11 @@ public class MatrizDinamica {
     public void insere(int newLin, int newCol, int newDado) {
         Elo elo = primArray[newLin];
 
+        if (newDado==0) {
+            remove(newLin, newCol);
+            return;
+        }
+
         if (newLin > this.lin || newCol > this.col) return;
         
         if (elo == null) {
@@ -199,8 +204,12 @@ public class MatrizDinamica {
     }
     
     //12. Verificar se a matriz é simétrica; (A[i,j] = A[j,i] para todo i, j);
-    public boolean isSimetrica(){
-        return false;
+    public boolean isSimetrica() {
+        for (int i = 0; i < this.lin; i++) 
+        for (int j = 0; j < this.col; j++) 
+            if (busca(i,j) != busca(i,j)) return false;
+        
+        return true;
     }
     
     //13. Somar duas matrizes esparsas;
@@ -208,6 +217,26 @@ public class MatrizDinamica {
     //14. Multiplicar duas matrizes esparsas; e
     
     //15. Obter a matriz transposta.
+    public MatrizDinamica transpor() {
+
+        MatrizDinamica m = new MatrizDinamica(lin,col);
+
+        if (this.lin != this.col) 
+            return null;
+
+        for (int i = 0; i < this.lin; i++) 
+        for (int j = 0; j < this.col; j++) {
+            int ij = busca(i,j);
+            int ji = busca(j,i);
+            if (i > j){
+                m.insere(j, i, ij);
+                m.insere(i, j, ji);
+            }else{ 
+                m.insere(i, j, ij);
+            }
+        }
+        return m;
+    }
 
     //metodo estatico pra gerar matriz aleatoria com exatos (ou o mais aproximado de) x% de zeros
     public static MatrizDinamica gerarMatrizAleatoria(int size, double esparsidade){ //esparsidade 0.6
