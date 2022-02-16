@@ -149,12 +149,14 @@ public class MatrizDinamica {
     public boolean isDiagonal(){
         if (isVazia()) return false;
 
+        //percorre a matriz
         for (int i = 0; i < this.lin; i++) 
         for (int j = 0; j < this.col; j++) {
             if (i!=j) if (buscaPriv(i, j) != null) 
+            //se encontrar algum valor quando i != j, ou seja, fora da diagonal principal
                 return false;
         }
-        
+        //caso contrário
         return true;
     }
 
